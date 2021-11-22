@@ -2,6 +2,7 @@ package steps;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.SignInPage;
@@ -29,14 +30,14 @@ public class SignInStepDefinitions extends AbstractStepDefinitions{
 
     @When("the Sign In button is clicked")
     public void theSignInButtonIsClicked() {
-        signInPage.clickSignInButton();
-       waitFor(3);
+        signInPage.clickSignInSubmitButton();
+       waitFor(5);
     }
 
-    @And("the {string} should be shown")
+    @Then("the {string} should be shown")
     public void theError_messageShouldBeShown(String expectedErrorMessage) {
         String actualErrorMessage = signInPage.getErrorMessage();
-        System.out.println(expectedErrorMessage.equals(actualErrorMessage));
-//        Assert.assertEquals("Error Message",expectedErrorMessage,actualErrorMessage);
+        System.out.println(expectedErrorMessage+":"+actualErrorMessage);
+        Assert.assertEquals(expectedErrorMessage,actualErrorMessage);
     }
 }

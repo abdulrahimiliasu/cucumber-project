@@ -3,6 +3,7 @@ package steps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import pages.AccountPage;
 import pages.ChangePasswordPage;
 import pages.SignInPage;
@@ -42,14 +43,16 @@ public class ChangePasswordStepDefinitions extends AbstractStepDefinitions{
 
     @Then("the {string} error message should appear")
     public void theMessageErrorMessageShouldAppear(String expectedErrorMessage) {
-        String actualMessage = changePasswordPage.getErrorMessage();
-        System.out.println(expectedErrorMessage+":"+actualMessage);
+        String actualErrorMessage = changePasswordPage.getErrorMessage();
+        System.out.println(expectedErrorMessage+":"+actualErrorMessage);
+        Assert.assertEquals(expectedErrorMessage,actualErrorMessage);
     }
 
     @Then("the {string} success message should appear")
     public void theMessageSuccessMessageShouldAppear(String expectedSuccessMessage) {
-        String actualMessage = changePasswordPage.getSuccessMessage();
-        System.out.println(expectedSuccessMessage+":"+actualMessage);
+        String actualSuccessMessage = changePasswordPage.getSuccessMessage();
+        System.out.println(expectedSuccessMessage+":"+actualSuccessMessage);
+        Assert.assertEquals(expectedSuccessMessage,actualSuccessMessage);
     }
 
     @When("the save button is clicked")

@@ -21,8 +21,11 @@ public class HomePage {
     @FindBy(xpath = "//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a")
     private WebElement signInButton;
 
-    @FindBy(xpath = "//*[@id=\"center_column\"]/h1/span")
+    @FindBy(xpath = "//*[@id=\"center_column\"]/h1/span[2]")
     private WebElement searchResult;
+
+    @FindBy(xpath = "//*[@id=\"center_column\"]/h1/span")
+    private WebElement searchResultWithWarning;
 
     @FindBy(xpath = "//*[@id=\"center_column\"]/p")
     private WebElement helpText;
@@ -38,7 +41,15 @@ public class HomePage {
         searchButton.click();
     }
 
-    public String getSearchResultText(){return searchResult.getText().strip();}
+    public String getSearchResultText(){
+        String text;
+        try{
+            text = searchResult.getText().strip();
+        }catch (NoSuchElementException  |  TimeoutException exception){
+            text = searchResultWithWarning.getText().strip();
+        }
+        return text.strip();
+    }
 
     public String getSearchHelpText() {
         String text;

@@ -25,7 +25,7 @@ public class ContactUsPage {
     @FindBy(xpath = "//*[@id=\"center_column\"]/div/ol/li")
     private WebElement errorText;
 
-    @FindBy(xpath = "//*[@id=\"center_column\"]/p")
+    @FindBy(className = "alert-success")
     private WebElement successText;
 
     public ContactUsPage(WebDriver driver){

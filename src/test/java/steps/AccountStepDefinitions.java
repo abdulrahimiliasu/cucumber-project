@@ -4,6 +4,7 @@ package steps;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import pages.AccountPage;
 import pages.SignInPage;
 
@@ -46,6 +47,7 @@ public class AccountStepDefinitions extends AbstractStepDefinitions{
     public void theMessageShouldBeShown(String expectedMessage) {
         String actualMessage = accountPage.getWarningMessage();
         System.out.println(expectedMessage+ ":" +actualMessage);
+        Assert.assertEquals(expectedMessage,actualMessage);
     }
 
     @When("the my address button is clicked")
@@ -58,11 +60,13 @@ public class AccountStepDefinitions extends AbstractStepDefinitions{
     public void theAddressShouldBeThere(String expectedAddress) {
         String actualAddress = accountPage.getAddress();
         System.out.println(expectedAddress+ ":" + actualAddress);
+        Assert.assertEquals(expectedAddress,actualAddress);
     }
 
     @Then("the {string} text should be shown.")
     public void theTextShouldBeShown(String expectedMessage) {
         String actualMessage = accountPage.getOrderText();
         System.out.println(expectedMessage+ ":" +actualMessage);
+        Assert.assertEquals(expectedMessage,actualMessage);
     }
 }

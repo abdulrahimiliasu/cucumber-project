@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import pages.ProductPage;
 import pages.ShoppingCartPage;
 
@@ -26,6 +27,7 @@ public class CartStepDefinitions extends AbstractStepDefinitions{
     public void aMessageShouldBeDisplayed(String expectedMessage) {
         String actualMessage = shoppingCartPage.getMessage();
         System.out.println(expectedMessage+":"+actualMessage);
+        Assert.assertEquals(expectedMessage,actualMessage);
     }
 
     @Given("the user added items to the cart")
@@ -65,6 +67,7 @@ public class CartStepDefinitions extends AbstractStepDefinitions{
     public void messageShouldBeShown(String expectedMessage) {
         String actualMessage = shoppingCartPage.getOrderSuccessMessage();
         System.out.println(expectedMessage+":"+actualMessage);
+        Assert.assertEquals(expectedMessage,actualMessage);
     }
 
     @When("the proceed button is clicked")

@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import pages.ProductPage;
 
 public class ProductStepDefinitions extends AbstractStepDefinitions{
@@ -27,14 +28,14 @@ public class ProductStepDefinitions extends AbstractStepDefinitions{
     }
 
     @Then("fill name of friend  with {string}")
-    public void fillNameOfFriendWithName(String expectedName) {
-        productPage.fillNameOfFriendFieldWith(expectedName);
+    public void fillNameOfFriendWithName(String name) {
+        productPage.fillNameOfFriendFieldWith(name);
         waitFor(2);
     }
 
     @And("fill email of friend with {string}")
-    public void fillEmailOfFriendWithEmail(String expectedEmail) {
-        productPage.fillEmailOfFriendFieldWith(expectedEmail);
+    public void fillEmailOfFriendWithEmail(String email) {
+        productPage.fillEmailOfFriendFieldWith(email);
         waitFor(2);
     }
 
@@ -48,6 +49,7 @@ public class ProductStepDefinitions extends AbstractStepDefinitions{
     public void theFeedbackMessageShouldBeShown(String expectedMessage) {
         String actualMessage = productPage.getSendToFriendErrorMessage();
         System.out.println(expectedMessage+":"+actualMessage);
+        Assert.assertEquals(expectedMessage,actualMessage);
     }
 
     @Then("write review button is clicked")
@@ -76,10 +78,12 @@ public class ProductStepDefinitions extends AbstractStepDefinitions{
         if (expectedCommentMsg.equals(" ")){
             actualComment = productPage.getCommentIncorrectErrorMessage();
             System.out.println(expectedTitleMsg+":"+ expectedCommentMsg+" "+ actualComment);
+            Assert.assertEquals(expectedCommentMsg,actualComment);
         }
         if (expectedTitleMsg.equals(" ")){
             actualTitle = productPage.getCommentIncorrectErrorMessage();
             System.out.println(expectedTitleMsg+":"+ expectedCommentMsg+" "+actualTitle);
+            Assert.assertEquals(expectedTitleMsg,actualTitle);
         }
 
     }

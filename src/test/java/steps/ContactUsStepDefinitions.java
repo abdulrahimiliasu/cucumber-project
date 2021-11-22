@@ -1,9 +1,9 @@
 package steps;
 
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import pages.ContactUsPage;
 import pages.HomePage;
 
@@ -44,15 +44,17 @@ public class ContactUsStepDefinitions extends AbstractStepDefinitions{
         waitFor(5);
     }
 
-    @And("the {string} should be shown to user")
+    @Then("the {string} should be shown to user")
     public void theError_messageShouldBeShownToUser(String expectedError) {
         String actualError = contactUsPage.getErrorMessageText();
         System.out.println(expectedError.equals(actualError));
+        Assert.assertEquals(expectedError,actualError);
     }
 
-    @And("the {string} success message should be shown to user")
+    @Then("the {string} success message should be shown to user")
     public void theSuccessMessageShouldBeShownToUser(String expectedSuccessMessage) {
-        String actualMessage = contactUsPage.getSuccessMessageText();
-        System.out.println(expectedSuccessMessage.equals(actualMessage));
+        String actualSuccessMessage = contactUsPage.getSuccessMessageText();
+        System.out.println(expectedSuccessMessage+":"+actualSuccessMessage+"--end");
+        Assert.assertEquals(expectedSuccessMessage,actualSuccessMessage);
     }
 }

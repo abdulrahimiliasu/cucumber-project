@@ -81,7 +81,7 @@ public class SignInPage {
         try{
             text = errorMessageText.getText();
         }catch (NoSuchElementException | TimeoutException exception){
-            return "";
+            return "No Such Element";
         }
         return text.strip();
     }

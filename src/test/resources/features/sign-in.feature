@@ -8,7 +8,7 @@ Feature: Sign in with Credentials feature
     Given the email address field is filled with '<email>'
     And the password field is filled with '<password>'
     When the Sign In button is clicked
-    And the '<error_message>' should be shown
+    Then the '<error_message>' should be shown
     Examples:
       | email         | password | error_message             |
       | sdd@.2e.com   | 12345678 | Invalid email address.    |
@@ -17,4 +17,3 @@ Feature: Sign in with Credentials feature
       |               |          | An email address required.|
       | tom@gmail.com | 12345678 | Authentication failed.    |
       | tom@gmail.com | 1        | Invalid password.         |
-      | buyer@gmail.com | 12345678|    |
